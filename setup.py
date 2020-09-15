@@ -7,7 +7,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="microfilter",
-    version="0.0.7",
+    version="0.0.8",
     description="Filtering noisy data",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -24,7 +24,7 @@ setup(
     test_suite='pytest',
     tests_require=['pytest'],
     include_package_data=True,
-    install_requires=["pandas","numpy","pytest","statsmodels","hyperopt","scipy","matplotlib","microconventions<0.4"],
+    install_requires=["pandas","numpy","pytest","statsmodels","hyperopt","scipy","matplotlib","microconventions<0.4","wheel"],
     entry_points={
         "console_scripts": [
             "microfilter=microfilter.__main__:main",

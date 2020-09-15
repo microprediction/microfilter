@@ -62,7 +62,7 @@ class ExpNormDist(FitDist, ABC):
         logK, loc, logScale = self.params['logK'], self.params['loc'], self.params['logScale']
         K = math.exp(logK)
         scale = math.exp(logScale)
-        if self.state['anchor'] is None:
+        if self.state['anchor'] is None or np.isnan(value):
             return 0.0
         else:
             x = value - self.state['anchor']
