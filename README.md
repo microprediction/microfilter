@@ -1,6 +1,8 @@
 # microfilter
 
-Some ad-hoc approaches to filtering noisy data, using hyperopt
+Some ad-hoc approaches to filtering noisy data that don't appear in textbooks
+
+![](https://i.imgur.com/b5fAtxr.png)
 
 ## Usage example
 

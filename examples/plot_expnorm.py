@@ -9,7 +9,7 @@ if __name__=='__main__':
     zs = sim_data(chronological=True)
     zs_train = zs[:500]
     zs_test = zs[500:]
-    dist.hyper_params['max_evals']=10
+    dist.hyper_params['max_evals']=1000
     dist.fit(lagged_values=list(reversed(zs_train)),lagged_times=[1. for _ in zs_train])
     pprint(dist.params)
     anchors = list()
