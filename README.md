@@ -1,6 +1,6 @@
 # microfilter
 
-Some ad-hoc approaches to filtering noisy data that don't appear in textbooks
+Some ad-hoc approaches to filtering noisy data that don't appear in textbooks (and maybe shouldn't)
 
 ![](https://i.imgur.com/b5fAtxr.png)
 
@@ -11,7 +11,7 @@ Train filter on simulated noisy data
     from microfilter.univariate.expnormdist import ExpNormDist
     from microfilter.univariate.noisysim import sim_lagged_values_and_times
     
-    lagged_values, lagged_times = sim_lagged_values_and_times
+    lagged_values, lagged_times = sim_lagged_values_and_times()
     dist = ExpNormDist()
     dist.hyper_params['max_evals']=500
     dist.fit(lagged_values=lagged_values, lagged_times=lagged_times)
