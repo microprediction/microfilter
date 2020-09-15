@@ -1,2 +1,3 @@
 # microfilter
-Filtering
+
+Different approaches to filtering noisy data 

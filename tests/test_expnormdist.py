@@ -1,4 +1,4 @@
-from microprediction.univariate.expnormdist import ExpNormDist
+from microfilter.univariate.expnormdist import ExpNormDist
 import numpy as np
 from scipy.stats import skewnorm
 import random
@@ -24,7 +24,3 @@ def test_expnormdist():
     for z in zs_test:
         dist.update(value=z,dt=None)
         anchors.append(dist.params['anchor'])
-    df = pd.DataFrame(columns=['original','smoothed'])
-    df['original'] = zs_test
-    df['smoothed'] = anchors
-    df.plot()

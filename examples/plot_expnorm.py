@@ -1,4 +1,4 @@
-from microfilter.distmachines.expnormdist import ExpNormDist
+from microfilter.univariate.expnormdist import ExpNormDist
 import numpy as np
 from scipy.stats import skewnorm
 import random

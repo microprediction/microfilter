@@ -24,7 +24,7 @@ setup(
     test_suite='pytest',
     tests_require=['pytest'],
     include_package_data=True,
-    install_requires=["pandas","numpy","pytest","python-dateutil","statsmodels","microprediction","hyperopt","scipy","matplotlib"],
+    install_requires=["pandas","numpy","pytest","python-dateutil","statsmodels","hyperopt","scipy","matplotlib","microconventions"],
     entry_points={
         "console_scripts": [
             "microfilter=microfilter.__main__:main",
