@@ -7,8 +7,8 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="microfilter",
-    version="0.0.1",
-    description="Filtering TRACE",
+    version="0.0.2",
+    description="Filtering",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/microprediction/microfilter",
@@ -22,9 +22,9 @@ setup(
     ],
     packages=["microfilter"],
     test_suite='pytest',
-    tests_require=['pytest', 'microconventions', 'fakeredis'],
+    tests_require=['pytest'],
     include_package_data=True,
-    install_requires=["pandas","numpy","pytest","python-dateutil"],
+    install_requires=["pandas","numpy","pytest","python-dateutil","statsmodels","microprediction","hyperopt","scipy","matplotlib"],
     entry_points={
         "console_scripts": [
             "microfilter=microfilter.__main__:main",
