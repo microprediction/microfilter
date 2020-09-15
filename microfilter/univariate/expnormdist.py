@@ -43,13 +43,16 @@ class ExpNormDist(FitDist, ABC):
         self.cached_params = None
         self.num_interp = 500
         self.cached_samples = None
+        self.issued_nan_warning = False
 
     def update(self, value=None, dt=None, **kwargs):
         """ Move the anchor """
         if value is not None:
             if np.isnan(value):
-                import logging
-                logging.warning('NaN value encountered by expnormdist.update(). Ignoring. ')
+                if not self.issued_nan_warning:
+                    import logging
+                    logging.warning('NaN value encountered by expnormdist.update(). Ignoring. ')
+                    self.issued_nan_warning = True
             else:
                 dy = value - self.state['anchor'] if self.state['anchor'] is not None else 0.0
                 move = self.params['g2'] * math.tanh(self.params['g1'] * dy / self.params['g2'])
