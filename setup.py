@@ -7,7 +7,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="microfilter",
-    version="0.0.8",
+    version="0.0.9",
     description="Filtering noisy data",
     long_description=README,
     long_description_content_type="text/markdown",
