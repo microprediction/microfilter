@@ -47,12 +47,16 @@ class ExpNormDist(FitDist, ABC):
     def update(self, value=None, dt=None, **kwargs):
         """ Move the anchor """
         if value is not None:
-            dy = value - self.state['anchor'] if self.state['anchor'] is not None else 0.0
-            move = self.params['g2'] * math.tanh(self.params['g1'] * dy / self.params['g2'])
-            if self.state['anchor'] is not None:
-                self.state['anchor'] = self.state['anchor'] + move
+            if np.isnan(value):
+                import logging
+                logging.warning('NaN value encountered by expnormdist.update(). Ignoring. ')
             else:
-                self.state['anchor'] = value
+                dy = value - self.state['anchor'] if self.state['anchor'] is not None else 0.0
+                move = self.params['g2'] * math.tanh(self.params['g1'] * dy / self.params['g2'])
+                if self.state['anchor'] is not None:
+                    self.state['anchor'] = self.state['anchor'] + move
+                else:
+                    self.state['anchor'] = value
 
     def log_likelihood(self, value: float) -> float:
         logK, loc, logScale = self.params['logK'], self.params['loc'], self.params['logScale']

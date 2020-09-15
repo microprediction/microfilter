@@ -8,7 +8,7 @@ README = (HERE / "README.md").read_text()
 setup(
     name="microfilter",
     version="0.0.6",
-    description="Filtering",
+    description="Filtering noisy data",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/microprediction/microfilter",
