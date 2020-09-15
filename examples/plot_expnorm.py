@@ -1,26 +1,15 @@
 from microfilter.univariate.expnormdist import ExpNormDist
-import numpy as np
-from scipy.stats import skewnorm
-import random
 from pprint import pprint
 import pandas as pd
 import matplotlib.pyplot as plt
-
-
-def sim_data():
-    a = random.choice([2., 3., 4.])
-    ys = skewnorm.rvs(a, size=1000)
-    outliers = [ random.choice([-1.,1.])*10. if np.random.rand()<0.05 else 0. for _ in ys]
-    xs = np.cumsum(0.1*np.random.randn(1000))
-    zs = [x + y*random.choice([-1.,1.]) + o for x, y, o in zip(xs, ys, outliers)]
-    return zs
+from microfilter.univariate.noisysim import sim_data
 
 if __name__=='__main__':
     dist = ExpNormDist()
-    zs = sim_data()
+    zs = sim_data(chronological=True)
     zs_train = zs[:500]
     zs_test = zs[500:]
-    dist.hyper_params['max_evals']=1000
+    dist.hyper_params['max_evals']=10
     dist.fit(lagged_values=list(reversed(zs_train)),lagged_times=[1. for _ in zs_train])
     pprint(dist.params)
     anchors = list()
