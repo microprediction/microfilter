@@ -12,7 +12,7 @@ def sim_data():
     ys = skewnorm.rvs(a, size=1000)
     outliers = [ random.choice([-1.,1.])*10. if np.random.rand()<0.05 else 0. for _ in ys]
     xs = np.cumsum(0.1*np.random.randn(1000))
-    zs = [x + y + o for x, y, o in zip(xs, ys, outliers)]
+    zs = [x + y*random.choice([-1.,1.]) + o for x, y, o in zip(xs, ys, outliers)]
     return zs
 
 if __name__=='__main__':
@@ -20,7 +20,7 @@ if __name__=='__main__':
     zs = sim_data()
     zs_train = zs[:500]
     zs_test = zs[500:]
-    dist.hyper_params['max_evals']=500
+    dist.hyper_params['max_evals']=1000
     dist.fit(lagged_values=list(reversed(zs_train)),lagged_times=[1. for _ in zs_train])
     pprint(dist.params)
     anchors = list()
@@ -30,5 +30,7 @@ if __name__=='__main__':
     df = pd.DataFrame(columns=['original','smoothed'])
     df['original'] = zs_test
     df['smoothed'] = anchors
-    df.plot()
+    df['prediction'] = df['smoothed'].shift(-1)
+    df[['original','prediction']].plot()
     plt.show()
+

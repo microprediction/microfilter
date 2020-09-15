@@ -9,7 +9,7 @@ def sim_data():
     a = random.choice([2., 3., 4.])
     ys = skewnorm.rvs(a, size=1000)
     xs = np.cumsum(np.random.randn(1000))
-    zs = [x + y for x, y in zip(xs, ys)]
+    zs = [x + random.choice([-1.,1.])*y for x, y in zip(xs, ys)]
     return zs
 
 

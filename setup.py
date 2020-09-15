@@ -7,7 +7,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="microfilter",
-    version="0.0.3",
+    version="0.0.4",
     description="Filtering",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -20,7 +20,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=["microfilter","microfilter.univariate"],
+    packages=["microfilter"],
     test_suite='pytest',
     tests_require=['pytest'],
     include_package_data=True,
